@@ -95,11 +95,10 @@ class Room(core_models.TimeStampedModel):
         super().save(*args, **kwargs)
 
     def total_rating(self):
-        try:
-            all_reviews = self.reviews.all()
-            all_ratings = 0
+        all_reviews = self.reviews.all()
+        all_ratings = 0
+        if len(all_reviews) > 0:
             for review in all_reviews:
                 all_ratings += review.rating_average()
             return all_ratings / len(all_reviews)
-        except ZeroDivisionError:
-            return 0
+        return 0
