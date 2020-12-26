@@ -3,4 +3,4 @@ from rooms import views as room_viwes
 
 app_name = "core"
 
-urlpatterns = [path("", room_viwes.all_rooms, name="home")]
+urlpatterns = [path("", room_viwes.HomeView.as_view(), name="home")]
